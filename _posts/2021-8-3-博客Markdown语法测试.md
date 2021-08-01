@@ -232,3 +232,9 @@ def foo
   puts 'foo'
 end
 {% endhighlight %}
+
+
+
+test Img
+
+![image-20210801141057411](https://gitee.com/wuTribe/images/raw/master/img/image-20210801141057411.png)
