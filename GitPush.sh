@@ -7,7 +7,7 @@ echo;
 echo "Commit the changes to the local repository"
 echo "please enter the commit info...."
 message=$1
-now=$(date "+%Y%m%d%H%M%S")
+now=$(date "+%Y-%m-%d %H:%M:%S")
 echo $now
 git commit -m "${now} ${message}"
 echo;
