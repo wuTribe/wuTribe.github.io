@@ -1,6 +1,6 @@
 ---
 title: 博客Markdown语法测试，长长长长长长长长长长长长长长长长长长长长长长的标题
-date: 2021-8-1 10:42:16
+date: 1970-1-1 00:00:00
 photos:
 - https://gitee.com/wuTribe/images/raw/master/img/image-20210801141057411.png
 - https://gitee.com/wuTribe/images/raw/master/img/image-20210801141057411.png
