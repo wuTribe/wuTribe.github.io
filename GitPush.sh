@@ -1,16 +1,15 @@
 echo "Start submitting code to the local repository"
-echo "The current directory is：%cd%"
+echo "The current directory is：$0"
 git add *
 echo;
 
 
-
 echo "Commit the changes to the local repository"
 echo "please enter the commit info...."
-set /p message=
-set now=%date% %time%
-echo %now%
-git commit -m "%now% %message%"
+message=$1
+now=$(date "+%Y%m%d%H%M%S")
+echo $now
+git commit -m "${now} ${message}"
 echo;
  
 echo "Commit the changes to the remote git server"
