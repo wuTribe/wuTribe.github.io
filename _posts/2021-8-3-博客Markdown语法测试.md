@@ -2,7 +2,7 @@
 title: 博客Markdown语法测试，长长长长长长长长长长长长长长长长长长长长长长的标题
 date: 2021-8-1 10:42:16
 photos:
-- http://ww1.sinaimg.cn/mw690/81b78497jw1emfgwkasznj21hc0u0qb7.jpg
+- https://gitee.com/wuTribe/images/raw/master/img/image-20210801141057411.png
 - http://ww3.sinaimg.cn/mw690/81b78497jw1emfgwjrh2pj21hc0u01g3.jpg
 - http://ww2.sinaimg.cn/mw690/81b78497jw1emfgwil5xkj21hc0u0tpm.jpg
 - http://ww3.sinaimg.cn/mw690/81b78497jw1emfgvcdn25j21hc0u0qpa.jpg
