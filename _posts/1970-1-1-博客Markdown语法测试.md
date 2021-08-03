@@ -7,14 +7,14 @@ photos:
 - https://gitee.com/wuTribe/images/raw/master/img/image-20210801141057411.png
 - https://gitee.com/wuTribe/images/raw/master/img/image-20210801141057411.png
 categories:
-- test/test
-- Foo
-- Bar
-- Baz
+- categories/test1
+- categories1
+- categories2
+- categories3
 tags:
-- test1
-- test2
-- test3
+- tags1
+- tags2
+- tagst3
 description: Gallery Post Test. 测试图片类文章的显示。
 ---
 
