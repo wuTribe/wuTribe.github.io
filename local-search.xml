@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>0-2-844.比较含退格的字符串</title>
+    <link href="/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-2-844.%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    <url>/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-2-844.%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><ul><li><a href="https://leetcode.cn/problems/backspace-string-compare/">844. 比较含退格的字符串</a></li><li><a href="https://www.bilibili.com/video/BV1954y1Q7dX/?share_source=copy_web&vd_source=577501e0685d20f8a8f1561cac87ce0a"> 【Leetcode刷题 844. 比较含退格的字符串 Backspace String Compare】 </a></li></ul><h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">backspaceCompare</span><span class="hljs-params">(String s, String t)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">si</span> <span class="hljs-operator">=</span> s.length() - <span class="hljs-number">1</span>, ti = t.length() - <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">sb</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, tb = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (si &gt;= <span class="hljs-number">0</span> || ti &gt;= <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 遍历两个字符串</span><br>            <span class="hljs-keyword">while</span> (si &gt;= <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 先从后往前遍历 s</span><br>                <span class="hljs-keyword">if</span> (s.charAt(si) == <span class="hljs-string">&#x27;#&#x27;</span>) &#123; <span class="hljs-comment">// 遇到 # 累加计数器，同时移动指针</span><br>                    sb++;<br>                    si--;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-keyword">if</span> (sb &gt; <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 计数器不为0，继续往前移动指针，相当于被删除</span><br>                        si--;<br>                        sb--;<br>                    &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">// 当前字符存在</span><br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">while</span> (ti &gt;= <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 再从后往前遍历 t，其他逻辑一样</span><br>                <span class="hljs-keyword">if</span> (t.charAt(ti) == <span class="hljs-string">&#x27;#&#x27;</span>) &#123;<br>                    tb++;<br>                    ti--;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-keyword">if</span> (tb &gt; <span class="hljs-number">0</span>) &#123;<br>                        ti--;<br>                        tb--;<br>                    &#125; <span class="hljs-keyword">else</span> &#123;<br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>            &#125;<br>            <span class="hljs-comment">// 遍历存在的最后的字符</span><br>            <span class="hljs-keyword">if</span>(si &gt;= <span class="hljs-number">0</span> &amp;&amp; ti &gt;= <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">if</span> (s.charAt(si) != t.charAt(ti)) &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                &#125;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">if</span> (si &gt;= <span class="hljs-number">0</span> || ti &gt;= <span class="hljs-number">0</span>) &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>                &#125;<br>            &#125;<br>            si--;<br>            ti--;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-2-283.移动零</title>
+    <link href="/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-2-283.%E7%A7%BB%E5%8A%A8%E9%9B%B6/"/>
+    <url>/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-2-283.%E7%A7%BB%E5%8A%A8%E9%9B%B6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="https://leetcode.cn/problems/move-zeroes/">283. 移动零</a></p><h1 id="双指针实现"><a href="#双指针实现" class="headerlink" title="双指针实现"></a>双指针实现</h1><p>快指针遍历，当遇到不是 0 的元素时，快指针给慢指针赋值，同时移动慢指针。每次遍历都移动快指针</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">moveZeroes</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, f = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (f &lt; nums.length) &#123;<br>            <span class="hljs-keyword">if</span> (nums[f] != <span class="hljs-number">0</span>) &#123;<br>                nums[s++] = nums[f];<br>            &#125;<br>            f++;<br>        &#125;<br>        <span class="hljs-keyword">while</span> (s &lt; nums.length) &#123;<br>            nums[s++] = <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-2-26.删除有序数组中的重复项</title>
+    <link href="/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-2-26.%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/"/>
+    <url>/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-2-26.%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><ul><li><a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-array/">26. 删除有序数组中的重复项</a></li></ul><h1 id="双指针实现"><a href="#双指针实现" class="headerlink" title="双指针实现"></a>双指针实现</h1><p>遍历数组，如果快指针和慢指针指向的数字相等，则不断移动快指针，直到二者不相等，然后慢指针往后移动一步，将快指针指向的值赋值给慢指针，重复这个步骤</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">removeDuplicates</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, s = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (f &lt; nums.length) &#123;<br>            <span class="hljs-keyword">if</span> (nums[s] == nums[f]) &#123;<br>                f++;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                nums[++s] = nums[f];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> s + <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-1-27.移除元素</title>
+    <link href="/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-1-27.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/"/>
+    <url>/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/0-1-27.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><ul><li><a href="https://www.bilibili.com/video/BV12A4y1Z7LP/?share_source=copy_web&vd_source=577501e0685d20f8a8f1561cac87ce0a">【数组中移除元素并不容易！ | LeetCode：27. 移除元素】</a></li><li><a href="https://programmercarl.com/0027.%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0.html#_27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0">移除元素</a></li></ul><h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul><li>数组的删除元素。实际数组不能删除元素，只能覆盖</li><li>可使用暴力破解的方式，双循环，第一层找到需要删除的元素，第二层循环就开始覆盖</li><li>或者使用快慢指针，快指针遍历，慢指针负责覆盖</li></ul><h1 id="代码实现-双指针"><a href="#代码实现-双指针" class="headerlink" title="代码实现-双指针"></a>代码实现-双指针</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">removeElement</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, l = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (f &lt; nums.length) &#123;<br>            <span class="hljs-comment">// 快指针遍历，如果不是需要删除的元素，直接覆盖给慢指针</span><br>            <span class="hljs-keyword">if</span> (nums[f] != val) &#123;<br>                nums[l++] = nums[f];<br>            &#125;<br>            f++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> l;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-5-367. 有效的完全平方数</title>
+    <link href="/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-5-367.%20%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/"/>
+    <url>/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-5-367.%20%E6%9C%89%E6%95%88%E7%9A%84%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h1><ul><li><a href="https://leetcode.cn/problems/valid-perfect-square/submissions/">题目连接</a></li><li><a href="https://www.bilibili.com/video/BV1pp4y1W7eZ/?p=2&share_source=copy_web&vd_source=577501e0685d20f8a8f1561cac87ce0a">【【专题讲解】详细剖析二分查找 leetcode 33 81 367 Search in Rotated Sorted Array】</a></li></ul><h1 id="使用静态变量提前定义"><a href="#使用静态变量提前定义" class="headerlink" title="使用静态变量提前定义"></a>使用静态变量提前定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> HashSet&lt;Integer&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>    <span class="hljs-keyword">static</span> &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">50000</span>; i++) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">ii</span> <span class="hljs-operator">=</span> i * i;<br>            <span class="hljs-keyword">if</span> (ii &lt; <span class="hljs-number">0</span>) &#123; <span class="hljs-comment">// 溢出</span><br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            set.add(ii);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPerfectSquare</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> &#123;<br>        <span class="hljs-keyword">return</span> set.contains(num);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>可以把 set 打印出来，容器大小也就 46340，如果使用二分法的话，由于输入的数据最大二十一亿，右边界最多 46340</p><p>同样的注意，m * m 溢出问题</p><h1 id="使用二分搜索"><a href="#使用二分搜索" class="headerlink" title="使用二分搜索"></a>使用二分搜索</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isPerfectSquare</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">r</span> <span class="hljs-operator">=</span> <span class="hljs-number">46340</span>;<br>        <span class="hljs-keyword">while</span> (l &lt;= r) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> l + ((r - l) &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-type">int</span> <span class="hljs-variable">ret</span> <span class="hljs-operator">=</span> m * m;<br>            <span class="hljs-keyword">if</span> (ret &gt;  num) &#123;<br>                r = m - <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (ret &lt; num) &#123;<br>                l = m + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>查找算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-4-69.x的平方根</title>
+    <link href="/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-4-69.%20x%20%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/"/>
+    <url>/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-4-69.%20x%20%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h1><ul><li><a href="https://leetcode.cn/problems/sqrtx/description/">题目连接</a></li><li><a href="https://www.bilibili.com/video/BV1WW411C7YN/?share_source=copy_web&vd_source=577501e0685d20f8a8f1561cac87ce0a">【花花酱 LeetCode 69 Sqrt(x) - 刷题找工作 EP158】</a></li></ul><h1 id="思路-注意"><a href="#思路-注意" class="headerlink" title="思路 &amp; 注意"></a>思路 &amp; 注意</h1><ul><li>利用二分查找</li><li>注意 int 类型溢出</li><li>最终查找出来的边界必定在 left 和 right 之间，直接取值</li></ul><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">mySqrt</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> x;<br><br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">middle</span> <span class="hljs-operator">=</span> left + ((right - left) &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (middle &gt; x / middle) &#123;<br>                right = middle - <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (middle &lt; x / middle) &#123;<br>                left = middle + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> middle;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> right;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>查找算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-3-34.在排序数组中查找元素的第一个和最后一个位置</title>
+    <link href="/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-3-34.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/"/>
+    <url>/2023/10/29/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-3-34.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h1><ul><li><a href="https://programmercarl.com/0035.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.html#%E6%80%9D%E8%B7%AF">搜索插入位置</a><ul><li>利用二分法找到左右边界</li></ul></li><li><a href="https://www.bilibili.com/video/BV1wy4y1k76F/?share_source=copy_web&vd_source=577501e0685d20f8a8f1561cac87ce0a">程序员面试经典题，二分搜索一个区间，区间查找 (LeetCode 34)</a></li></ul><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] searchRange(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[] &#123;searchL(nums, target), searchR(nums, target)&#125;;<br>    &#125;<br><br>    <span class="hljs-comment">// 寻找左边界</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">searchL</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.length;<br><br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">middle</span> <span class="hljs-operator">=</span> left + ((right - left) &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (nums[middle] &gt; target) &#123;<br>                right = middle;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] &lt; target) &#123;<br>                left = middle + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">// 相等并且符合起始边界，返回</span><br>                <span class="hljs-keyword">if</span> (middle == <span class="hljs-number">0</span> || (nums[middle - <span class="hljs-number">1</span>] != target)) &#123;<br>                    <span class="hljs-keyword">return</span> middle;<br>                &#125;<br>                right = middle;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br><br>    <span class="hljs-comment">// 寻找右边界</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">searchR</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.length;<br><br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">middle</span> <span class="hljs-operator">=</span> left + ((right - left) &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (nums[middle] &gt; target) &#123;<br>                right = middle;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] &lt; target) &#123;<br>                left = middle + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                System.out.println(middle);<br>                <span class="hljs-comment">// 相等并且符合起始边界，返回</span><br>                <span class="hljs-keyword">if</span> ((middle == nums.length - <span class="hljs-number">1</span>) || (nums[middle + <span class="hljs-number">1</span>] &gt; target)) &#123;<br>                    <span class="hljs-keyword">return</span> middle;<br>                &#125;<br>                left = middle + <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>查找算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-2-35.搜索插入位置</title>
+    <link href="/2023/10/28/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-2-35.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/"/>
+    <url>/2023/10/28/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-2-35.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h1><p><a href="https://programmercarl.com/0035.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE.html#%E6%80%9D%E8%B7%AF">搜索插入位置</a></p><h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">searchInsert</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.length;<br><br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">middle</span> <span class="hljs-operator">=</span> left + ((right - left) &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (nums[middle] &gt; target) &#123;<br>                right = middle;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] &lt; target) &#123;<br>                left = middle + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] == target) &#123;<br>                <span class="hljs-keyword">return</span> middle;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> right;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>查找算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-1-704.二分查找</title>
+    <link href="/2023/10/27/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-1-704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
+    <url>/2023/10/27/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/0-1-704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h1><p><a href="https://programmercarl.com/0704.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">代码随想录-二分查找</a></p><p><a href="https://www.bilibili.com/video/BV1fA4y1o715/">讲解视频</a></p><h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul><li>区间判断：根据区间定义后面的判断逻辑，区间定义常见的有两个<ul><li>左闭右开区间（常见的包左不包右）</li><li>左闭右闭区间</li></ul></li><li>int 类型溢出<ul><li>在进行右侧左右边界计算时，如果数组长度超过 11亿，相加会溢出</li></ul></li><li>查找前提，数组有序 &amp;&amp; 元素唯一<ul><li>元素唯一可以做变式，比如区间的边界查找</li></ul></li></ul><h1 id="左闭右开实现"><a href="#左闭右开实现" class="headerlink" title="左闭右开实现"></a>左闭右开实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">search</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.length; <span class="hljs-comment">// 闭区间，右侧无意义</span><br>        <span class="hljs-keyword">while</span> (left &lt; right) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">middle</span> <span class="hljs-operator">=</span> left + ((right - left) &gt;&gt; <span class="hljs-number">1</span>);<br>            <span class="hljs-keyword">if</span> (nums[middle] &lt; target) &#123;<br>                left = middle + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] &gt; target) &#123;<br>                right = middle;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] == target) &#123;<br>                <span class="hljs-keyword">return</span> middle;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="左闭右闭实现"><a href="#左闭右闭实现" class="headerlink" title="左闭右闭实现"></a>左闭右闭实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">search</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">right</span> <span class="hljs-operator">=</span> nums.length - <span class="hljs-number">1</span>; <span class="hljs-comment">// 必须是有效区间</span><br>        <span class="hljs-keyword">while</span> (left &lt;= right) &#123;  <span class="hljs-comment">// [1, 1] 区间有意义</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">middle</span> <span class="hljs-operator">=</span> left + ((right - left) &gt;&gt; <span class="hljs-number">1</span>); <span class="hljs-comment">// 计算右侧的两个边界容易溢出</span><br>            <span class="hljs-keyword">if</span> (nums[middle] &lt; target) &#123;<br>                left = middle + <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (nums[middle] &gt; target) &#123;<br>                right = middle - <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> middle;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>算法入门</category>
+      
+      <category>数组</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>查找算法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>hexo+Fluid博客搭建</title>
+    <link href="/2023/10/27/%E5%8D%9A%E5%AE%A2/0-hexo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <url>/2023/10/27/%E5%8D%9A%E5%AE%A2/0-hexo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    
+    <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="网站框架"><a href="#网站框架" class="headerlink" title="网站框架"></a>网站框架</h2><p>hexo 是网站框架，可以不用一行代码就构建出自己的个人网站，可以记录文章，因此可作为博客，同样的还有 wordpress。</p><p>WordPress没用过因此给不了具体评价，仅根据网上查询，是需要一个服务器的，相对来说自由，但是需要处理域名，服务器之类的东西，相对麻烦，有时间捣鼓就好了。hexo可直接部署到 GitHub 或者 gitee上，不用服务器，完全免费，也不用花费太多精力</p><p><a href="https://hexo.io/zh-cn/">hexo官网</a></p><h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>hexo 和 WordPress 一样支持多个主题，在官网很明显的位置，点进去找到自己喜欢的</p><p><a href="https://hexo.io/themes/">hexo主题</a></p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="网站框架-1"><a href="#网站框架-1" class="headerlink" title="网站框架"></a>网站框架</h2><p>根据官网文档一步一步看下去就好了，注意 node 和 npm 版本</p><blockquote><p>这里注意原本的项目所需的 node 版本和 hexo 所需的 node 版本是否一致，谨慎升级两者，否则会出现某个项目跑不起来</p><p>这里可以使用 nvm 对 node 多版本管理，项目的 node 版本可以看 npm或者node-sass的，在package.json里</p></blockquote><h2 id="主题-1"><a href="#主题-1" class="headerlink" title="主题"></a>主题</h2><p>根据相关的步骤直接装就好了，大部分都不会有问题，这里本博客采用的是 <a href="https://hexo.fluid-dev.com/docs/">hexo fluid</a></p><blockquote><p>在之前本来想用 next，很简洁，但是在根据某某文章的安装过程中，出现了网站访问人数无法确定，没有首页等问题，经过百度查询后并没有解决，只能更换主题，后找到了 fluid，仅需下载，简单配置就可直接使用，非常省事</p></blockquote><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>待续……</p><h1 id="相对路径图片测试"><a href="#相对路径图片测试" class="headerlink" title="相对路径图片测试"></a>相对路径图片测试</h1><p>![截屏2023-10-29 14.02.29](images&#x2F;0-hexo-博客搭建.assets&#x2F;截屏2023-10-29 14.02.29.png)</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>example</title>
+    <link href="/2023/10/27/%E5%8D%9A%E5%AE%A2/hexo-Front-matter/"/>
+    <url>/2023/10/27/%E5%8D%9A%E5%AE%A2/hexo-Front-matter/</url>
+    
+    <content type="html"><![CDATA[<p>Hexo官网对于<a href="https://hexo.io/zh-cn/docs/front-matter">Front-matter</a>的描述</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs markdown">title: example<br>category:<br><span class="hljs-bullet"> -</span> [算法, tttt]<br><span class="hljs-bullet"> -</span> [Java]<br><span class="hljs-bullet"> -</span> [Java2]<br>date: 2023-10-27 15:45:47<br>tags:<br><span class="hljs-bullet"> -</span> [test1, test3]<br><span class="hljs-bullet"> -</span> test2<br>description: 文章描述语法测试<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
