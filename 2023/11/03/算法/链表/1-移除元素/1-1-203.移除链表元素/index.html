@@ -16,22 +16,22 @@
   <meta name="author" content="wuyufan">
   <meta name="keywords" content="Java,Linux,MySQL">
   
-    <meta name="description" content="尽可能详细的记录hexo+Fluid博客搭建，记录问题，方便查找">
+    <meta name="description" content="链表中移除元素">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo+Fluid博客搭建">
-<meta property="og:url" content="http://example.com/2023/10/27/%E5%8D%9A%E5%AE%A2/0-hexo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="1-1-203.移除链表元素">
+<meta property="og:url" content="http://example.com/2023/11/03/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/1-1-203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="看到我提醒我起床吃饭学习睡觉">
-<meta property="og:description" content="尽可能详细的记录hexo+Fluid博客搭建，记录问题，方便查找">
+<meta property="og:description" content="链表中移除元素">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-27T07:45:47.000Z">
-<meta property="article:modified_time" content="2023-10-30T01:53:40.863Z">
+<meta property="article:published_time" content="2023-11-03T10:29:45.000Z">
+<meta property="article:modified_time" content="2023-11-03T11:06:37.138Z">
 <meta property="article:author" content="wuyufan">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>hexo+Fluid博客搭建 - 看到我提醒我起床吃饭学习睡觉</title>
+  <title>1-1-203.移除链表元素 - 看到我提醒我起床吃饭学习睡觉</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="hexo+Fluid博客搭建"></span>
+            <span id="subtitle" data-typed-text="1-1-203.移除链表元素"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-27 15:45" pubdate>
-          2023年10月27日 下午
+        <time datetime="2023-11-03 18:29" pubdate>
+          2023年11月3日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          648 字
+          606 字
         
       </span>
     
@@ -268,27 +268,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">hexo+Fluid博客搭建</h1>
+            <h1 id="seo-header">1-1-203.移除链表元素</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="网站框架"><a href="#网站框架" class="headerlink" title="网站框架"></a>网站框架</h2><p>hexo 是网站框架，可以不用一行代码就构建出自己的个人网站，可以记录文章，因此可作为博客，同样的还有 wordpress。</p>
-<p>WordPress没用过因此给不了具体评价，仅根据网上查询，是需要一个服务器的，相对来说自由，但是需要处理域名，服务器之类的东西，相对麻烦，有时间捣鼓就好了。hexo可直接部署到 GitHub 或者 gitee上，不用服务器，完全免费，也不用花费太多精力</p>
-<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">hexo官网</a></p>
-<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>hexo 和 WordPress 一样支持多个主题，在官网很明显的位置，点进去找到自己喜欢的</p>
-<p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">hexo主题</a></p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="网站框架-1"><a href="#网站框架-1" class="headerlink" title="网站框架"></a>网站框架</h2><p>根据官网文档一步一步看下去就好了，注意 node 和 npm 版本</p>
-<blockquote>
-<p>这里注意原本的项目所需的 node 版本和 hexo 所需的 node 版本是否一致，谨慎升级两者，否则会出现某个项目跑不起来</p>
-<p>这里可以使用 nvm 对 node 多版本管理，项目的 node 版本可以看 npm或者node-sass的，在package.json里</p>
-</blockquote>
-<h2 id="主题-1"><a href="#主题-1" class="headerlink" title="主题"></a>主题</h2><p>根据相关的步骤直接装就好了，大部分都不会有问题，这里本博客采用的是 <a target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/">hexo fluid</a></p>
-<blockquote>
-<p>在之前本来想用 next，很简洁，但是在根据某某文章的安装过程中，出现了网站访问人数无法确定，没有首页等问题，经过百度查询后并没有解决，只能更换主题，后找到了 fluid，仅需下载，简单配置就可直接使用，非常省事</p>
-</blockquote>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>待续……</p>
-<h1 id="相对路径图片测试"><a href="#相对路径图片测试" class="headerlink" title="相对路径图片测试"></a>相对路径图片测试</h1><p>![截屏2023-10-29 14.02.29](images&#x2F;0-hexo-博客搭建.assets&#x2F;截屏2023-10-29 14.02.29.png)</p>
+                <h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-linked-list-elements/">力扣题目链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18B4y1s7R9">链表基础操作| LeetCode：203.移除链表元素 (opens new window)</a></p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>注意删除指针的时候不需要移动 next 节点就好了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * public class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode() &#123;&#125;</span><br><span class="hljs-comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="hljs-comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">removeElements</span><span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">h</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(<span class="hljs-number">0</span>, head);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> h;<br>        <span class="hljs-keyword">while</span> (tmp.next != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (tmp.next.val == val) &#123;<br>                tmp.next = tmp.next.next;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                tmp = tmp.next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> h.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
 
                 
               </div>
@@ -307,8 +298,32 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%8D%9A%E5%AE%A2/" class="category-chain-item">博客</a>
+  <a href="/categories/leetcode/" class="category-chain-item">leetcode</a>
   
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E7%AE%97%E6%B3%95/" class="category-chain-item">代码随想录-算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/" class="category-chain-item">2-链表</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="category-chain-item">1-移除元素</a>
+  
+  
+
+  
+
   
 
       </span>
@@ -322,7 +337,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/hexo/" class="print-no-link">#hexo</a>
+        <a href="/tags/%E9%93%BE%E8%A1%A8/" class="print-no-link">#链表</a>
       
     </div>
   
@@ -334,8 +349,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>hexo+Fluid博客搭建</div>
-      <div>http://example.com/2023/10/27/博客/0-hexo-博客搭建/</div>
+      <div>1-1-203.移除链表元素</div>
+      <div>http://example.com/2023/11/03/算法/链表/1-移除元素/1-1-203.移除链表元素/</div>
     </div>
     <div class="license-meta">
       
@@ -347,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月27日</div>
+          <div>2023年11月3日</div>
         </div>
       
       
@@ -379,15 +394,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/27/%E5%8D%9A%E5%AE%A2/hexo-Front-matter/" title="example">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">example</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/11/03/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
