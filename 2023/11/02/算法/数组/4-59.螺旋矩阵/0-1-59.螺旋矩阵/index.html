@@ -16,22 +16,22 @@
   <meta name="author" content="wuyufan">
   <meta name="keywords" content="Java,Linux,MySQL">
   
-    <meta name="description" content="最小覆盖子串">
+    <meta name="description" content="螺旋矩阵">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0-3-76.最小覆盖子串">
-<meta property="og:url" content="http://example.com/2023/10/31/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/3-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/0-3-76.%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/index.html">
+<meta property="og:title" content="0-1-59.螺旋矩阵">
+<meta property="og:url" content="http://example.com/2023/11/02/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/4-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/0-1-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="看到我提醒我起床吃饭学习睡觉">
-<meta property="og:description" content="最小覆盖子串">
+<meta property="og:description" content="螺旋矩阵">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-31T11:58:20.000Z">
-<meta property="article:modified_time" content="2023-11-02T06:40:57.694Z">
+<meta property="article:published_time" content="2023-11-02T11:38:08.000Z">
+<meta property="article:modified_time" content="2023-11-02T12:23:00.306Z">
 <meta property="article:author" content="wuyufan">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>0-3-76.最小覆盖子串 - 看到我提醒我起床吃饭学习睡觉</title>
+  <title>0-1-59.螺旋矩阵 - 看到我提醒我起床吃饭学习睡觉</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="0-3-76.最小覆盖子串"></span>
+            <span id="subtitle" data-typed-text="0-1-59.螺旋矩阵"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-31 19:58" pubdate>
-          2023年10月31日 晚上
+        <time datetime="2023-11-02 19:38" pubdate>
+          2023年11月2日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          733 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          11 分钟
+          7 分钟
         
       </span>
     
@@ -268,17 +268,17 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">0-3-76.最小覆盖子串</h1>
+            <h1 id="seo-header">0-1-59.螺旋矩阵</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">76. 最小覆盖子串</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zd4y117AT/?share_source=copy_web&vd_source=577501e0685d20f8a8f1561cac87ce0a">【LeetCode 76｜最小覆盖子串｜滑动窗口｜双指针｜经典困难题快来挑战呀】 </a></p>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>还是套用滑动窗口的模板，但是多了字符记录的map，收缩扩容的记录条件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 所需要的字符统计</span><br>    HashMap&lt;Integer, Integer&gt; ori = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    <span class="hljs-comment">// 实际出现的字符统计</span><br>    HashMap&lt;Integer, Integer&gt; cnt = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">minWindow</span><span class="hljs-params">(String s, String t)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">l</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, r = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ansL</span> <span class="hljs-operator">=</span> -<span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">ansR</span> <span class="hljs-operator">=</span> <span class="hljs-number">0x7fffffff</span> - <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 统计字符出现个数</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; t.length(); i++) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> t.charAt(i);<br>            ori.put(c, ori.getOrDefault(c, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);<br>        &#125;<br><br>        <span class="hljs-keyword">while</span> (r &lt; s.length()) &#123;<br>            <span class="hljs-comment">// 移动右窗口添加元素，统计</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> s.charAt(r);<br>            <span class="hljs-keyword">if</span> (ori.containsKey(c)) &#123;<br>                cnt.put(c, cnt.getOrDefault(c, <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);<br>            &#125;<br>            <span class="hljs-comment">// 检查是否满足题目要求，如果满足，记录结果，移除记录窗口中的元素，移动左窗口调整</span><br>            <span class="hljs-keyword">while</span> (check()) &#123;<br>                <span class="hljs-keyword">if</span> ((ansR - ansL) &gt; (r - l)) &#123;<br>                    ansL = l;<br>                    ansR = r;<br>                &#125;<br>                <span class="hljs-type">int</span> <span class="hljs-variable">cc</span> <span class="hljs-operator">=</span> s.charAt(l);<br>                <span class="hljs-keyword">if</span> (ori.containsKey(cc)) &#123;<br>                    cnt.put(cc, cnt.get(cc) - <span class="hljs-number">1</span>);<br>                &#125;<br>                ++l;<br>            &#125;<br>            ++r;<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> ansL == -<span class="hljs-number">1</span> ? <span class="hljs-string">&quot;&quot;</span> : s.substring(ansL, ansR+<span class="hljs-number">1</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// 判断进入窗口的字符是否大于等于所需的字符</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">check</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-type">Iterator</span> <span class="hljs-variable">iter</span> <span class="hljs-operator">=</span> ori.entrySet().iterator();<br>        <span class="hljs-keyword">while</span> (iter.hasNext()) &#123;<br>            Map.<span class="hljs-type">Entry</span> <span class="hljs-variable">entry</span> <span class="hljs-operator">=</span> (Map.Entry) iter.next();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) entry.getKey();<br>            <span class="hljs-type">int</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) entry.getValue();<br>            <span class="hljs-comment">// 存在，一个所需字符大于统计字符，跳出</span><br>            <span class="hljs-keyword">if</span> (cnt.getOrDefault(key, <span class="hljs-number">0</span>) &lt; value) &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0059.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">59.螺旋矩阵II</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/spiral-matrix-ii/">力扣题目链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1SL4y1N7mV">拿下螺旋矩阵！LeetCode：59.螺旋矩阵II</a></p>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>转圈圈，注意每个边界条件统一，方便处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[][] generateMatrix(<span class="hljs-type">int</span> n) &#123;<br>        <span class="hljs-type">int</span>[][] rs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n][n];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 当前计算次数</span><br>        <span class="hljs-comment">// 循环次数：每次循环处理两个边界，所以 n / 2</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> n / <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; mid; i++) &#123;<br>            <span class="hljs-comment">// 边界处理，包左不包右</span><br>            <span class="hljs-comment">// i:近端边界，last远端边界</span><br>            <span class="hljs-comment">// ii j 各自计算的边界，为了方便识别，ii 表示横坐标计算，j 表示纵坐标计算</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">last</span> <span class="hljs-operator">=</span> n - i - <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">// 上边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> + i; j &lt; last; j++) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[i][j] = cur;<br>                ++cur;<br>            &#125;<br>            <span class="hljs-comment">// 右边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">ii</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> + i; ii &lt; last; ii++) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[ii][last] = cur;<br>                ++cur;<br>            &#125;<br>            <span class="hljs-comment">// 下边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> last; j &gt; i; j--) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[last][j] = cur;<br>                ++cur;<br>            &#125;<br>            <span class="hljs-comment">// 左边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">ii</span> <span class="hljs-operator">=</span> last; ii &gt; i; ii--) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[ii][i] = cur;<br>                ++cur;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) &#123;<br>            rs[mid][mid] = cur;<br>        &#125;<br>        <span class="hljs-keyword">return</span> rs;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>上面代码还有优化的地方，扩容的时候顺便记录关键字符的对应下标，收缩的时候直接根据下标直接收缩</p>
 
                 
               </div>
@@ -317,7 +317,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="category-chain-item">长度最小的子数组</a>
+  <a href="/categories/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95-%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" class="category-chain-item">螺旋矩阵</a>
   
   
 
@@ -348,8 +348,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>0-3-76.最小覆盖子串</div>
-      <div>http://example.com/2023/10/31/算法/数组/3-长度最小的子数组/0-3-76.最小覆盖子串/</div>
+      <div>0-1-59.螺旋矩阵</div>
+      <div>http://example.com/2023/11/02/算法/数组/4-59.螺旋矩阵/0-1-59.螺旋矩阵/</div>
     </div>
     <div class="license-meta">
       
@@ -361,7 +361,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月31日</div>
+          <div>2023年11月2日</div>
         </div>
       
       
@@ -393,9 +393,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/02/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/4-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/0-1-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" title="0-1-59.螺旋矩阵">
+                      <a href="/2023/11/02/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/4-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/0-2-54.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/" title="0-2-54.螺旋矩阵">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">0-1-59.螺旋矩阵</span>
+                        <span class="hidden-mobile">0-2-54.螺旋矩阵</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -403,8 +403,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/31/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/3-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/0-2-904.%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE/" title="0-2-904.水果成篮">
-                        <span class="hidden-mobile">0-2-904.水果成篮</span>
+                      <a href="/2023/10/31/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/3-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/0-3-76.%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/" title="0-3-76.最小覆盖子串">
+                        <span class="hidden-mobile">0-3-76.最小覆盖子串</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

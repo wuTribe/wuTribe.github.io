@@ -4,6 +4,68 @@
   
   
   <entry>
+    <title>0-2-54.螺旋矩阵</title>
+    <link href="/2023/11/02/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/4-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/0-2-54.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"/>
+    <url>/2023/11/02/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/4-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/0-2-54.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="https://leetcode.cn/problems/spiral-matrix/">54. 螺旋矩阵</a></p><h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>和上一道题差不多，注意各个边界处理</p><p>x1…….x2</p><p>……………</p><p>y1……..y2</p><p>但是这里需要调整一下</p><ul><li>上边界处理 x1   x2</li><li>右边界处理   y2</li><li>下边界不处理</li><li>左边界处理   y1</li></ul><p>同时要考虑只有一行或一列的情况，如果分开处理就复杂了</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">spiralOrder</span><span class="hljs-params">(<span class="hljs-type">int</span>[][] matrix)</span> &#123;<br>        List&lt;Integer&gt; rs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        <span class="hljs-comment">// 以最小的边界作为循环条件</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">t</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">lastX</span> <span class="hljs-operator">=</span> matrix[<span class="hljs-number">0</span>].length - t - <span class="hljs-number">1</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">lastY</span> <span class="hljs-operator">=</span> matrix.length - t - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> (t &lt;= lastX &amp;&amp; t &lt;= lastY) &#123;<br>            <span class="hljs-comment">// 上边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> t; i &lt;= lastX; ++i) &#123; <span class="hljs-comment">// 增加临界情况处理，[x,y]</span><br>                rs.add(matrix[t][i]);<br>            &#125;<br>            <span class="hljs-comment">// 右边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> t + <span class="hljs-number">1</span>; j &lt;= lastY; ++j) &#123; <span class="hljs-comment">// 增加临界情况处理 (y,x)</span><br>                rs.add(matrix[j][lastX]);<br>            &#125;<br>            <span class="hljs-keyword">if</span> (t &lt; lastX &amp;&amp; t &lt; lastY) &#123; <span class="hljs-comment">// 处理只有一行或一列的情况</span><br>                <span class="hljs-comment">// 下边界</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> lastX - <span class="hljs-number">1</span>; i &gt; t; --i) &#123; <span class="hljs-comment">// 去除临界情况处理 [x,y)</span><br>                    rs.add(matrix[lastY][i]);<br>                &#125;<br>                <span class="hljs-comment">// 左边界</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> lastY; j &gt; t; --j) &#123; <span class="hljs-comment">// [y,x)</span><br>                    rs.add(matrix[j][t]);<br>                &#125;<br>            &#125;<br>            ++t;<br>            --lastX;<br>            --lastY;<br>        &#125;<br>        <span class="hljs-keyword">return</span> rs;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>代码随想录-算法</category>
+      
+      <category>数组</category>
+      
+      <category>螺旋矩阵</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>0-1-59.螺旋矩阵</title>
+    <link href="/2023/11/02/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/4-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/0-1-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"/>
+    <url>/2023/11/02/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/4-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/0-1-59.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/</url>
+    
+    <content type="html"><![CDATA[<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a href="https://programmercarl.com/0059.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5II.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">59.螺旋矩阵II</a></p><p><a href="https://leetcode.cn/problems/spiral-matrix-ii/">力扣题目链接</a></p><p><a href="https://www.bilibili.com/video/BV1SL4y1N7mV">拿下螺旋矩阵！LeetCode：59.螺旋矩阵II</a></p><h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><p>转圈圈，注意每个边界条件统一，方便处理</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[][] generateMatrix(<span class="hljs-type">int</span> n) &#123;<br>        <span class="hljs-type">int</span>[][] rs = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n][n];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; <span class="hljs-comment">// 当前计算次数</span><br>        <span class="hljs-comment">// 循环次数：每次循环处理两个边界，所以 n / 2</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> n / <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; mid; i++) &#123;<br>            <span class="hljs-comment">// 边界处理，包左不包右</span><br>            <span class="hljs-comment">// i:近端边界，last远端边界</span><br>            <span class="hljs-comment">// ii j 各自计算的边界，为了方便识别，ii 表示横坐标计算，j 表示纵坐标计算</span><br>            <span class="hljs-type">int</span> <span class="hljs-variable">last</span> <span class="hljs-operator">=</span> n - i - <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">// 上边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> + i; j &lt; last; j++) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[i][j] = cur;<br>                ++cur;<br>            &#125;<br>            <span class="hljs-comment">// 右边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">ii</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> + i; ii &lt; last; ii++) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[ii][last] = cur;<br>                ++cur;<br>            &#125;<br>            <span class="hljs-comment">// 下边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> last; j &gt; i; j--) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[last][j] = cur;<br>                ++cur;<br>            &#125;<br>            <span class="hljs-comment">// 左边界</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">ii</span> <span class="hljs-operator">=</span> last; ii &gt; i; ii--) &#123; <span class="hljs-comment">// 横坐标右移</span><br>                rs[ii][i] = cur;<br>                ++cur;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (n % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) &#123;<br>            rs[mid][mid] = cur;<br>        &#125;<br>        <span class="hljs-keyword">return</span> rs;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>leetcode</category>
+      
+      <category>代码随想录-算法</category>
+      
+      <category>数组</category>
+      
+      <category>螺旋矩阵</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>数组</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>0-3-76.最小覆盖子串</title>
     <link href="/2023/10/31/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/3-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/0-3-76.%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/"/>
     <url>/2023/10/31/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/3-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/0-3-76.%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2/</url>
