@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>2-7-142.环形链表II</title>
+    <link href="/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-7-142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II/"/>
+    <url>/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-7-142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II/</url>
+    
+    <content type="html"><![CDATA[<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a href="https://leetcode.cn/problems/linked-list-cycle-ii/">力扣题目链接</a></p><h1 id="思路-实现"><a href="#思路-实现" class="headerlink" title="思路&amp;实现"></a>思路&amp;实现</h1><p>和链表相交的思路类似</p><h2 id="暂存地址"><a href="#暂存地址" class="headerlink" title="暂存地址"></a>暂存地址</h2><p>这里暂存使用哈希表的 set 实现，一旦出现同一个地址，就是说明有环，并且是入环口</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode(int x) &#123;</span><br><span class="hljs-comment"> *         val = x;</span><br><span class="hljs-comment"> *         next = null;</span><br><span class="hljs-comment"> *     &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">detectCycle</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> head;<br>        &#125;<br>        HashSet&lt;ListNode&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (set.contains(cur)) &#123;<br>                <span class="hljs-keyword">return</span> cur;<br>            &#125; <br>            set.add(cur);<br>            cur = cur.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cur;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="这是一个数学题"><a href="#这是一个数学题" class="headerlink" title="这是一个数学题"></a>这是一个数学题</h2><p>可以用快慢指针解决</p><p>假设链表长度   x1 + x2，x1 是入环前节点，x2 是环中节点。</p><p>则有   addr(x1 + x2) &#x3D; addr(x1 + n(x2))，n 为环中循环圈数，addr为节点地址。由于</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>链表</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>2-6-面试题_02.07.链表相交</title>
     <link href="/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-6-%E9%9D%A2%E8%AF%95%E9%A2%98_02.07.%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/"/>
     <url>/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-6-%E9%9D%A2%E8%AF%95%E9%A2%98_02.07.%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/</url>

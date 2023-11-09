@@ -16,22 +16,22 @@
   <meta name="author" content="wuyufan">
   <meta name="keywords" content="Java,Linux,MySQL">
   
-    <meta name="description" content="2-6-面试题_02.07.链表相交">
+    <meta name="description" content="环形链表II">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2-6-面试题_02.07.链表相交">
-<meta property="og:url" content="http://example.com/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-6-%E9%9D%A2%E8%AF%95%E9%A2%98_02.07.%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/index.html">
+<meta property="og:title" content="2-7-142.环形链表II">
+<meta property="og:url" content="http://example.com/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-7-142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II/index.html">
 <meta property="og:site_name" content="看到我提醒我起床吃饭学习睡觉">
-<meta property="og:description" content="2-6-面试题_02.07.链表相交">
+<meta property="og:description" content="环形链表II">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-09T09:11:21.672Z">
-<meta property="article:modified_time" content="2023-11-09T10:06:16.698Z">
+<meta property="article:published_time" content="2023-11-09T10:07:59.133Z">
+<meta property="article:modified_time" content="2023-11-09T10:28:30.065Z">
 <meta property="article:author" content="wuyufan">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>2-6-面试题_02.07.链表相交 - 看到我提醒我起床吃饭学习睡觉</title>
+  <title>2-7-142.环形链表II - 看到我提醒我起床吃饭学习睡觉</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="2-6-面试题_02.07.链表相交"></span>
+            <span id="subtitle" data-typed-text="2-7-142.环形链表II"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-09 17:11" pubdate>
-          2023年11月9日 下午
+        <time datetime="2023-11-09 18:07" pubdate>
+          2023年11月9日 晚上
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          977 字
+          640 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          9 分钟
+          6 分钟
         
       </span>
     
@@ -268,32 +268,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">2-6-面试题_02.07.链表相交</h1>
+            <h1 id="seo-header">2-7-142.环形链表II</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/">面试题 02.07. 链表相交</a></p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>两种方法：</p>
-<ol>
-<li>把 A 链表地址存下，再遍历 B 链表逐个比较，相同就返回。代码简单就不写了</li>
-<li>双指针，双遍历。这里需要分类讨论<ul>
-<li>如果相交<ul>
-<li>假设两个链表分别为 a,b<br>a.length &#x3D; a1 + a2<br>b.length &#x3D; b1 + b2<br>当 a b 在 c 处相交时，a2 &#x3D;&#x3D; b2，即<br>a.length &#x3D; a1 + c<br>b.length &#x3D; b1 + c<br>当 a 遍历完走 b，b 遍历完走 a，他们的长度为<br>a：a1 + c + b1 + c<br>b：b1 + c + a1 + c<br>如果 a1 &#x3D;&#x3D; b1，第一个 c 就相遇<br>如果 a1 !&#x3D; b1，第二个 c 相遇<br>所以，当他们走完对方的独立长度时，就是二者相交点</li>
-</ul>
-</li>
-<li>如果不相交<ul>
-<li>遍历两次都找不到公共点</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * public class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode(int x) &#123;</span><br><span class="hljs-comment"> *         val = x;</span><br><span class="hljs-comment"> *         next = null;</span><br><span class="hljs-comment"> *     &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> &#123;<br>        <span class="hljs-keyword">if</span> (headA == <span class="hljs-literal">null</span> || headB == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmpA</span> <span class="hljs-operator">=</span> headA;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmpB</span> <span class="hljs-operator">=</span> headB;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>            <span class="hljs-keyword">if</span> (tmpA == tmpB) &#123;<br>                <span class="hljs-keyword">return</span> tmpA;<br>            &#125;<br>            tmpA = tmpA.next;<br>            tmpB = tmpB.next;<br>            <span class="hljs-keyword">if</span> (tmpB == <span class="hljs-literal">null</span>) &#123;<br>                tmpB = headA;<br>                ++n;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (tmpA == <span class="hljs-literal">null</span>) &#123;<br>                tmpA = headB;<br>                ++n;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (n == <span class="hljs-number">4</span>) &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/">力扣题目链接</a></p>
+<h1 id="思路-实现"><a href="#思路-实现" class="headerlink" title="思路&amp;实现"></a>思路&amp;实现</h1><p>和链表相交的思路类似</p>
+<h2 id="暂存地址"><a href="#暂存地址" class="headerlink" title="暂存地址"></a>暂存地址</h2><p>这里暂存使用哈希表的 set 实现，一旦出现同一个地址，就是说明有环，并且是入环口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode(int x) &#123;</span><br><span class="hljs-comment"> *         val = x;</span><br><span class="hljs-comment"> *         next = null;</span><br><span class="hljs-comment"> *     &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">detectCycle</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> head;<br>        &#125;<br>        HashSet&lt;ListNode&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;();<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">if</span> (set.contains(cur)) &#123;<br>                <span class="hljs-keyword">return</span> cur;<br>            &#125; <br>            set.add(cur);<br>            cur = cur.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> cur;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<p>这个题目给我的感觉，优化方案更像是数学题，能想到就很简单，想不到就死活做不出来</p>
+<h2 id="这是一个数学题"><a href="#这是一个数学题" class="headerlink" title="这是一个数学题"></a>这是一个数学题</h2><p>可以用快慢指针解决</p>
+<p>假设链表长度   x1 + x2，x1 是入环前节点，x2 是环中节点。</p>
+<p>则有   addr(x1 + x2) &#x3D; addr(x1 + n(x2))，n 为环中循环圈数，addr为节点地址。由于</p>
 
                 
               </div>
@@ -318,8 +307,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>2-6-面试题_02.07.链表相交</div>
-      <div>http://example.com/2023/11/09/算法/2-链表/1-移除元素/2-6-面试题_02.07.链表相交/</div>
+      <div>2-7-142.环形链表II</div>
+      <div>http://example.com/2023/11/09/算法/2-链表/1-移除元素/2-7-142.环形链表II/</div>
     </div>
     <div class="license-meta">
       
@@ -363,18 +352,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-7-142.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8II/" title="2-7-142.环形链表II">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2-7-142.环形链表II</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-5-19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" title="2-5-19.删除链表的倒数第N个节点">
-                        <span class="hidden-mobile">2-5-19.删除链表的倒数第N个节点</span>
+                      <a href="/2023/11/09/%E7%AE%97%E6%B3%95/2-%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/2-6-%E9%9D%A2%E8%AF%95%E9%A2%98_02.07.%E9%93%BE%E8%A1%A8%E7%9B%B8%E4%BA%A4/" title="2-6-面试题_02.07.链表相交">
+                        <span class="hidden-mobile">2-6-面试题_02.07.链表相交</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
