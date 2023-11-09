@@ -16,22 +16,22 @@
   <meta name="author" content="wuyufan">
   <meta name="keywords" content="Java,Linux,MySQL">
   
-    <meta name="description" content="设计链表">
+    <meta name="description" content="反转链表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1-2-707.设计链表">
-<meta property="og:url" content="http://example.com/2023/11/08/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/1-2-707.%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8/index.html">
+<meta property="og:title" content="1-2-206.反转链表">
+<meta property="og:url" content="http://example.com/2023/11/09/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/1-3-206.%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/index.html">
 <meta property="og:site_name" content="看到我提醒我起床吃饭学习睡觉">
-<meta property="og:description" content="设计链表">
+<meta property="og:description" content="反转链表">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-08T10:24:00.000Z">
-<meta property="article:modified_time" content="2023-11-08T10:44:59.891Z">
+<meta property="article:published_time" content="2023-11-09T05:50:00.000Z">
+<meta property="article:modified_time" content="2023-11-09T05:56:34.365Z">
 <meta property="article:author" content="wuyufan">
 <meta property="article:tag" content="链表">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>1-2-707.设计链表 - 看到我提醒我起床吃饭学习睡觉</title>
+  <title>1-2-206.反转链表 - 看到我提醒我起床吃饭学习睡觉</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="1-2-707.设计链表"></span>
+            <span id="subtitle" data-typed-text="1-2-206.反转链表"></span>
           
         </div>
 
@@ -208,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-08 18:24" pubdate>
-          2023年11月8日 晚上
+        <time datetime="2023-11-09 13:50" pubdate>
+          2023年11月9日 下午
         </time>
       </span>
     
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          1.1k 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          18 分钟
+          10 分钟
         
       </span>
     
@@ -268,21 +268,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">1-2-707.设计链表</h1>
+            <h1 id="seo-header">1-2-206.反转链表</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a target="_blank" rel="noopener" href="https://programmercarl.com/0707.%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8.html#%E6%80%9D%E8%B7%AF">代码随想录-涉及链表</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/design-linked-list/">力扣题目链接</a></p>
-<p>直接看官方最优答案的解释：前后加两个哨兵节点，size 可以加快处理速度</p>
-<p>需要注意的是索引下标从 0 开始</p>
-<ul>
-<li>新增插入到 index &#x3D; n 的前面</li>
-<li>新增的边界处理：0 &gt; index || index &gt; size  无意义</li>
-<li>删除&amp;查询的边界处理：0 &lt;&#x3D; index &lt; size</li>
-</ul>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyLinkedList</span> &#123;<br>    <span class="hljs-keyword">private</span> Node head; <span class="hljs-comment">// 头节点</span><br>    <span class="hljs-keyword">private</span> Node tail; <span class="hljs-comment">// 尾节点，初始化/增/删 都需要考虑尾指针</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> size; <span class="hljs-comment">// 大小，从 1 开始，注意索引从 0 开始</span><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> &#123;<br>        <span class="hljs-keyword">public</span> Node pre;<br>        <span class="hljs-keyword">public</span> Node next;<br>        <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> val;<br><br>        <span class="hljs-keyword">public</span> <span class="hljs-title function_">Node</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>            <span class="hljs-built_in">this</span>.val = val;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyLinkedList</span><span class="hljs-params">()</span> &#123;<br>        head = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(<span class="hljs-number">0</span>);<br>        tail = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(<span class="hljs-number">0</span>);<br>        head.next = tail;<br>        tail.pre = head;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">get</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> &#123;<br>        prin(<span class="hljs-string">&quot;get&quot;</span>);<br>        <span class="hljs-keyword">if</span> (!check(index)) &#123;<br>            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt;= index; ++i) &#123;<br>            tmp = tmp.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> tmp.val;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addAtHead</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>        addAtIndex(<span class="hljs-number">0</span>, val);<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addAtTail</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>        addAtIndex(size, val);<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addAtIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index, <span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-keyword">if</span> (index &gt; size) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; index; ++i) &#123;<br>            tmp = tmp.next;<br>        &#125;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">newNode</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Node</span>(val);<br>        tmp.next.pre = newNode;<br>        newNode.next = tmp.next;<br>        tmp.next = newNode;<br>        newNode.pre = tmp;<br>        ++size;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deleteAtIndex</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> &#123;<br>        <span class="hljs-keyword">if</span> (!check(index)) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-type">Node</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; index; ++i) &#123;<br>            tmp = tmp.next;<br>        &#125;<br>        tmp.next.next.pre = tmp;<br>        tmp.next = tmp.next.next;<br>        --size;<br>    &#125;<br><br>    <span class="hljs-comment">// 是否合法区域</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">check</span><span class="hljs-params">(<span class="hljs-type">int</span> index)</span> &#123;<br>        <span class="hljs-keyword">return</span> index &gt;= <span class="hljs-number">0</span> &amp;&amp; index &lt; size;<br>    &#125;<br><br>    <span class="hljs-comment">// 打印测试</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">prin</span><span class="hljs-params">(String addr)</span> &#123;<br>        System.out.println(addr + <span class="hljs-string">&quot; ============  -- size = &quot;</span> + size);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">Node</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> head; tmp != <span class="hljs-literal">null</span>; tmp = tmp.next) &#123;<br>            System.out.println(index + <span class="hljs-string">&quot; +++&gt; &quot;</span>+ tmp.val);<br>            ++index;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">index2</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">Node</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> tail; tmp != <span class="hljs-literal">null</span>; tmp = tmp.pre) &#123;<br>            System.out.println(index + <span class="hljs-string">&quot; ---&gt; &quot;</span>+ tmp.val);<br>            ++index2;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your MyLinkedList object will be instantiated and called as such:</span><br><span class="hljs-comment"> * MyLinkedList obj = new MyLinkedList();</span><br><span class="hljs-comment"> * int param_1 = obj.get(index);</span><br><span class="hljs-comment"> * obj.addAtHead(val);</span><br><span class="hljs-comment"> * obj.addAtTail(val);</span><br><span class="hljs-comment"> * obj.addAtIndex(index,val);</span><br><span class="hljs-comment"> * obj.deleteAtIndex(index);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+                <h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-linked-list/">力扣题目链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://programmercarl.com/0206.%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8.html#%E7%AE%97%E6%B3%95%E5%85%AC%E5%BC%80%E8%AF%BE">翻转链表</a></p>
+<h1 id="多指针"><a href="#多指针" class="headerlink" title="多指针"></a>多指针</h1><p>题目解释有问题，应该用三个指针</p>
+<p>pre    cur    next</p>
+<p>由于 cur.next 转向 pre，原本 next 数值丢失，需要暂存</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * public class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode() &#123;&#125;</span><br><span class="hljs-comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="hljs-comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 循环方式</span><br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">reverseList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">next</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">pre</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;<br>            next = cur.next;<br>            cur.next = pre;<br>            pre = cur;<br>            cur = next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> pre;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for singly-linked list.</span><br><span class="hljs-comment"> * public class ListNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     ListNode next;</span><br><span class="hljs-comment"> *     ListNode() &#123;&#125;</span><br><span class="hljs-comment"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="hljs-comment"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-comment">// 递归方式    </span><br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">reverseList</span><span class="hljs-params">(ListNode head)</span> &#123;<br>        <span class="hljs-keyword">return</span> reverse(<span class="hljs-literal">null</span>, head);<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">reverse</span><span class="hljs-params">(ListNode pre, ListNode cur)</span> &#123;<br>        <span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> pre;<br>        &#125;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">tmp</span> <span class="hljs-operator">=</span> cur.next;<br>        cur.next = pre;<br>        <span class="hljs-keyword">return</span> reverse(cur, tmp);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -353,8 +353,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>1-2-707.设计链表</div>
-      <div>http://example.com/2023/11/08/算法/链表/1-移除元素/1-2-707.设计链表/</div>
+      <div>1-2-206.反转链表</div>
+      <div>http://example.com/2023/11/09/算法/链表/1-移除元素/1-3-206.反转链表/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +366,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月8日</div>
+          <div>2023年11月9日</div>
         </div>
       
       
@@ -398,18 +398,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/09/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/1-3-206.%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" title="1-2-206.反转链表">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">1-2-206.反转链表</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/03/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/1-1-203.%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0/" title="1-1-203.移除链表元素">
-                        <span class="hidden-mobile">1-1-203.移除链表元素</span>
+                      <a href="/2023/11/08/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/1-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/1-2-707.%E8%AE%BE%E8%AE%A1%E9%93%BE%E8%A1%A8/" title="1-2-707.设计链表">
+                        <span class="hidden-mobile">1-2-707.设计链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
